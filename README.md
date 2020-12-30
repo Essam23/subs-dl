@@ -18,8 +18,8 @@ python3 hulu.py
 ```
 
 ### Animelon (animelon.py)
-1. Get video ID from URL:
-https://animelon.com/video/xxxxxxxxxxxx -> ID is xxxxxxxxxxxx
+1. Get video ID from URL:  
+`https://animelon.com/video/xxxxxxxxxxxx` => `xxxxxxxxxxxx`
 
 2. Execute the following command and paste the ID:
 ```
