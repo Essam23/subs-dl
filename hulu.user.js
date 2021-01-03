@@ -37,7 +37,7 @@ function downloadDidClick() {
     const series = json.items[0].series_name;
     const number = json.items[0].number;
     const name = json.items[0].name;
-    const filename = series + ' ' + number + ' 「' + name + '」.vtt';
+    const filename = series + ' ' + number + ' 「' + name + '」.srt';
     x = new XMLHttpRequest;
     x.open('GET', 'https://www.hulu.com/captions.xml?content_id=' + eab_id, !1);
     x.withCredentials = !0;
@@ -50,7 +50,12 @@ function downloadDidClick() {
         method: 'GET',
         url: vttUrl,
         onload: function (response) {
-            downloadURI('data:text/html,' + response.responseText, filename);
+            var srt = '';
+            const vtt = response.responseText;
+            for (const vttLine of vtt.split('\n')) {
+                srt += vttLine.replace(/(WEBVTT\s*(FILE)?.*)(\r\n)*/g, '').replace(/(\d{2}:\d{2}:\d{2})\.(\d{3}\s+)\-\-\>(\s+\d{2}:\d{2}:\d{2})\.(\d{3}\s*)/g, '$1,$2-->$3,$4').replace(/\<.+\>(.+)/g, '$1').replace(/\<.+\>(.+)\<.+\/\>/g, '$1') + '\r\n';
+            }
+            downloadURI('data:text/html,' + srt, filename);
         }
     });
 }
