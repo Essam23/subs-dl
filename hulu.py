@@ -17,7 +17,7 @@ if len(args) > 1:
 # prompt instruction
 print('Copy the text below and paste it to console of your browser to get Content ID:')
 print('------------------------------------------------------------------------------')
-print('var x=new XMLHttpRequest;x.open("GET","https://discover.hulu.com/content/v3/entity?language=en&schema=4&eab_ids="+window.location.href.split("/").pop(),!1),x.withCredentials=!0,x.send(null),JSON.parse(x.responseText)["items"][0]["content_id"];')
+print('var x=new XMLHttpRequest;x.open("GET","https://discover.hulu.com/content/v5/deeplink/playback?namespace=entity&schema=1&id="+window.location.href.split("/").pop(),!1),x.withCredentials=!0,x.send(null),JSON.parse(x.responseText)["eab_id"].split("::")[2];')
 print('------------------------------------------------------------------------------')
 content_id = input('Enter Content ID: ')
 
