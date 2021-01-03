@@ -56,6 +56,9 @@ function downloadDidClick() {
             filename += '- ' + name + '.srt';
         }
     }
+    if (filename === '') {
+        filename = eab_id + '.srt';
+    }
     x = new XMLHttpRequest;
     x.open('GET', 'https://www.hulu.com/captions.xml?content_id=' + eab_id, !1);
     x.withCredentials = !0;
