@@ -34,10 +34,12 @@ function downloadDidClick() {
     x.withCredentials = !0;
     x.send(null);
     json = JSON.parse(x.responseText);
+    console.log(json);
     const series = json.items[0].series_name;
+    const season = json.items[0].season;
     const number = json.items[0].number;
     const name = json.items[0].name;
-    const filename = series + ' ' + number + ' 「' + name + '」.srt';
+    const filename = series + ' S' + season + ' E' + number + ' - ' + name + '.srt';
     x = new XMLHttpRequest;
     x.open('GET', 'https://www.hulu.com/captions.xml?content_id=' + eab_id, !1);
     x.withCredentials = !0;
